@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a todo list app I am making to practice the following skills:
 
-Things you may want to cover:
+  -Devise for user auth.
 
-* Ruby version
+  -Turbo / Stimulus for SPA functionality and generally cut down on page refreshes
 
-* System dependencies
+  -Sending emails with ActionMailer
 
-* Configuration
+  -Styling with Bootstrap
 
-* Database creation
+Anyone can view todo lists that are set to 'public' but to make a todo list the user must register and login
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Once logged in a user can perform any CRUD related tasks on their lists.
