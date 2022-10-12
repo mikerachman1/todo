@@ -17,6 +17,16 @@
     <% if flash[:alert] %>
       <p><%= alert %></p>
     <% end %>
+    <div class="header">
+      <%= link_to 'All Lists', root_path %>
+      <%= link_to 'Create new List', new_list_path %>
+      <% if current_user %>
+        <%= current_user.email %>
+        <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %>
+      <% else %>
+        <%= link_to "Log in", new_user_session_path %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
