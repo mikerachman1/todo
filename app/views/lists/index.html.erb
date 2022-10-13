@@ -1,6 +1,8 @@
 <h1>All Todo lists</h1>
 
 <% @lists.each do |list| %>
-  <h3><%= link_to list.title, list_path(list) %></h3>
-  <h5><%= list.description %> - <%= list.user.email %></h5>
+  <% if current_user == list.user || list.status == 'public' %>
+    <h3><%= link_to list.title, list_path(list) %></h3>
+    <h5><%= list.description %> - <%= list.user.email %></h5>
+  <% end %>
 <% end %>

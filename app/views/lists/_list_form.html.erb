@@ -3,6 +3,8 @@
   <%= form.text_field :title %><br><br>
   <%= form.label :description %>
   <%= form.text_area :description %><br><br>
+  <%= form.label :status %>
+  <%= form.select :status, ['public', 'private'], selected: 'public' %>
 
   <%= form.submit %>
 <% end %>
