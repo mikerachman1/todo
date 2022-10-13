@@ -2,5 +2,5 @@
 
 <% @lists.each do |list| %>
   <h3><%= link_to list.title, list_path(list) %></h3>
-  <h5><%= list.description %></h5>
+  <h5><%= list.description %> - <%= list.user.email %></h5>
 <% end %>
