@@ -1,0 +1,9 @@
+<h1><%= @user.username %>'s Lists</h1>
+
+<% @user.lists.each do |list| %>
+  <ul>
+    <% if current_user == list.user || list.status == 'public' %>
+      <li><%= link_to list.title, list_path(list) %></li>
+    <% end %>
+  </ul>
+<% end %>

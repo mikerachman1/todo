@@ -5,7 +5,9 @@
   <% @list.tasks.each do |task| %>
     <ul>
       <li><%= task.title %> - <%= task.description %></li>
-      <span><%= link_to "DONE", [task.list, task], data: { turbo_method: :delete } %></span>
+      <% if @list.user == current_user %>
+        <span><%= link_to "DONE", [task.list, task], data: { turbo_method: :delete } %></span>
+      <% end %>
     </ul>
   <% end %>
 </div>
