@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "lists#index"
 
-  resources :lists 
+  resources :lists do
+    resources :tasks
+  end
 end

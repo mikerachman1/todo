@@ -1,0 +1,14 @@
+<h1><%= @list.title %></h1>
+
+<div>
+  <% @list.tasks.each do |task| %>
+    <ul>
+      <li><%= task.title %> - <%= task.description %></li>
+    </ul>
+  <% end %>
+</div>
+
+<div>
+  <h3>Add New Task:</h3>
+  <%= render "task_form" %>
+</div>
