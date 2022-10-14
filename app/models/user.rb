@@ -7,4 +7,9 @@ class User < ApplicationRecord
   has_many :lists, dependent: :destroy
 
   validates :username, presence: true
+
+  def self.email_subscribed
+    User.where(email_notification: true)
+  end
+
 end
