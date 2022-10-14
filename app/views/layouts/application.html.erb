@@ -21,7 +21,7 @@
       <%= link_to 'All Lists', root_path %>
       <%= link_to 'Create new List', new_list_path %>
       <% if current_user %>
-        <span>Logged in as: <%= current_user.username %></span>
+        <span>Logged in as: <%= link_to current_user.username, user_path(current_user) %></span>
         <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %>
       <% else %>
         <%= link_to "Log in", new_user_session_path %>
