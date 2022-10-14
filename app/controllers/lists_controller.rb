@@ -13,7 +13,9 @@ class ListsController < ApplicationController
     @list = current_user.lists.new(list_params)
 
     if @list.save
-      UserMailer.with(user: @list.user, list: @list).new_public_list.deliver_now
+      if @list.status == 'public'
+        UserMailer.with(user: @list.user, list: @list).new_public_list.deliver_now
+      end
       redirect_to @list
     else
       render :new, status: :unproccessable_entity
