@@ -26,6 +26,13 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.radio_button :email_notification, "true" %>
+    <%= f.label :email_notification_true, "Sign Me up for email notifications" %>
+    <%= f.radio_button :email_notification, "false" %>
+    <%= f.label :email_notification_false, "I don't want email notifications" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
