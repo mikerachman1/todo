@@ -15,6 +15,10 @@
 <div>
   <% if @list.user == current_user %>
     <h3>Add New Task:</h3>
-    <%= render "task_form" %>
+    <%= render "task_form" %><br><br>
+    <%= link_to 'Delete this list', list_path(@list), data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              } %>
   <% end %>
 </div>
