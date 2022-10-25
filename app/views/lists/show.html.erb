@@ -5,10 +5,12 @@
 <div>
   <% @list.tasks.each do |task| %>
     <ul>
-      <li><%= task.title %> - <%= task.description %></li>
-      <% if @list.user == current_user %>
-        <%= link_to 'Edit task', edit_list_task_path(@list, task) %>
-        <%= link_to "DONE", [task.list, task], data: { turbo_method: :delete } %>
+      <%= turbo_frame_tag task do %>
+        <li><%= task.title %> - <%= task.description %></li>
+        <% if @list.user == current_user %>
+          <%= link_to 'Edit task', edit_list_task_path(@list, task) %>
+          <%= link_to "DONE", [task.list, task], data: { turbo_method: :delete } %>
+        <% end %>
       <% end %>
     </ul>
   <% end %>
