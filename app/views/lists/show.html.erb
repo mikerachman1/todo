@@ -1,6 +1,6 @@
 <%= turbo_frame_tag @list do %>
   <h1><%= @list.title %></h1> 
-  <h5><%= @list.description %></h5>
+  <h5>Description: <%= @list.description %></h5>
   <% if @list.user == current_user %>
     <%= link_to 'Edit List title & description', edit_list_path(@list) %>
     <%= link_to 'Delete this list', list_path(@list), data: {
@@ -11,18 +11,19 @@
 <% end %>
 <h5>List created by: <%= link_to @list.user.username, user_path(@list.user) %></h5>
 
-<div>
-  <% @list.tasks.each do |task| %>
-    <ul>
-      <%= turbo_frame_tag task do %>
-        <li><%= task.title %> - <%= task.description %></li>
-        <% if @list.user == current_user %>
-          <%= link_to 'Edit task', edit_list_task_path(@list, task) %>
-          <%= link_to "DONE", [task.list, task], data: { turbo_method: :delete } %>
+<div data-controller="empty" data-empty-target="container">
+  <h3>To do:</h3>
+    <% @list.tasks.each do |task| %>
+      <ul>
+        <%= turbo_frame_tag task do %>
+          <li data-empty-target="task"><%= task.title %> - <%= task.description %></li>
+          <% if @list.user == current_user %>
+            <%= link_to 'Edit task', edit_list_task_path(@list, task) %>
+            <%= link_to "DONE", [task.list, task], data: { turbo_method: :delete } %>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
-  <% end %>
+      </ul>
+    <% end %>
 </div>
 
 <div>
