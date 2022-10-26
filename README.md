@@ -8,7 +8,6 @@ This is a todo list app I am making to practice the following skills:
 
   -Sending emails with ActionMailer
 
-  -Styling with Bootstrap
 
 Anyone can view todo lists that are set to 'public' but to make a todo list the user must register and login
 
