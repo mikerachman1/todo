@@ -1,33 +1,35 @@
-<%= turbo_frame_tag @list do %>
-  <h1><%= @list.title %></h1> 
-  <h5>Description: <%= @list.description %></h5>
-  <% if match_user(@list.user) %>
-    <%= link_to 'Edit List title & description', edit_list_path(@list) %>
-    <%= link_to 'Delete this list', list_path(@list), data: {
-                  turbo_method: :delete,
-                  turbo_confirm: "Are you sure?"
-                } %>
-  <% end %>
-<% end %>
-
-<div data-controller="empty" data-empty-target="container" class="m-3">
-  <h3>To do:</h3>
-    <% @list.tasks.each do |task| %>
-      <ul>
-        <%= turbo_frame_tag task do %>
-          <li data-empty-target="task"><%= task.title %> - <%= task.description %></li>
-          <% if match_user(@list.user) %>
-            <%= link_to 'Edit task', edit_list_task_path(@list, task) %>
-            <%= link_to "DONE", [task.list, task], data: { turbo_method: :delete } %>
-          <% end %>
-        <% end %>
-      </ul>
+<div class="container">
+  <%= turbo_frame_tag @list do %>
+    <h1><%= @list.title %></h1>
+    <h5>Description: <%= @list.description %></h5>
+    <% if match_user(@list.user) %>
+      <%= link_to 'Edit List title & description', edit_list_path(@list) %>
+      <%= link_to 'Delete this list', list_path(@list), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
     <% end %>
-</div>
-
-<div>
-  <% if match_user(@list.user) %>
-    <h3>Add New Task:</h3>
-    <%= render "task_form" %><br><br>
   <% end %>
+  
+  <div data-controller="empty" data-empty-target="container" class="m-3">
+    <h3>To do:</h3>
+      <% @list.tasks.each do |task| %>
+        <ul>
+          <%= turbo_frame_tag task do %>
+            <li data-empty-target="task"><%= task.title %> - <%= task.description %></li>
+            <% if match_user(@list.user) %>
+              <%= link_to 'Edit task', edit_list_task_path(@list, task) %>
+              <%= link_to "DONE", [task.list, task], data: { turbo_method: :delete } %>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+  </div>
+  
+  <div>
+    <% if match_user(@list.user) %>
+      <h3>Add New Task:</h3>
+      <%= render "task_form" %><br><br>
+    <% end %>
+  </div>
 </div>
