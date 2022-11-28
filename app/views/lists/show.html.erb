@@ -10,26 +10,26 @@
                   } %>
     <% end %>
   <% end %>
+</div>
   
-  <div data-controller="empty" data-empty-target="container" class="m-3">
-    <h3>To do:</h3>
-      <% @list.tasks.each do |task| %>
-        <ul>
-          <%= turbo_frame_tag task do %>
-            <li data-empty-target="task"><%= task.title %> - <%= task.description %></li>
-            <% if match_user(@list.user) %>
-              <%= link_to 'Edit task', edit_list_task_path(@list, task) %>
-              <%= link_to "DONE", [task.list, task], data: { turbo_method: :delete } %>
-            <% end %>
+<div data-controller="empty" data-empty-target="container" class="container">
+  <h3>To do:</h3>
+    <% @list.tasks.each do |task| %>
+      <ul>
+        <%= turbo_frame_tag task do %>
+          <li data-empty-target="task"><%= task.title %> - <%= task.description %> <input type="checkbox" checked></li>
+          <% if match_user(@list.user) %>
+            <%= link_to 'Edit Task', edit_list_task_path(@list, task), class: "btn" %>
+            <%= link_to "Delete Task", [task.list, task], data: { turbo_method: :delete }, class: "btn" %>
           <% end %>
-        </ul>
-      <% end %>
-  </div>
-  
-  <div>
-    <% if match_user(@list.user) %>
-      <h3>Add New Task:</h3>
-      <%= render "task_form" %><br><br>
+        <% end %>
+      </ul>
     <% end %>
-  </div>
+</div>
+  
+<div class="container">
+  <% if match_user(@list.user) %>
+    <h3>Add New Task:</h3>
+    <%= render "task_form" %><br><br>
+  <% end %>
 </div>
