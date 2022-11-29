@@ -18,8 +18,9 @@
       <div class="task">
         <ul>
           <%= turbo_frame_tag task do %>
-            <li data-empty-target="task"><%= task.title %> - <%= task.description %> <input type="checkbox"></li>
+            <li data-empty-target="task"><%= task.title %> - <%= task.description %> </li>
             <% if match_user(@list.user) %>
+              <input type="checkbox">
               <%= link_to 'Edit Task', edit_list_task_path(@list, task), class: "btn" %>
               <%= link_to "Delete Task", [task.list, task], data: { turbo_method: :delete }, class: "btn" %>
             <% end %>
