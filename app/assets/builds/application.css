@@ -88,6 +88,7 @@ h5,
 h6 {
   color: var(--color-text-header);
   line-height: var(--line-height-headers);
+  padding-bottom: 1rem;
 }
 
 h1 {
@@ -175,6 +176,7 @@ a:hover, a:focus, a:active {
 .form {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   gap: var(--space-xs);
 }
 .form__group {

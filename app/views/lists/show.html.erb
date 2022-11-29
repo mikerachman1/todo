@@ -1,13 +1,13 @@
 <div class="container">
   <%= turbo_frame_tag @list do %>
     <h1><%= @list.title %></h1>
-    <h5>Description: <%= @list.description %></h5>
+    <h5><%= @list.description %></h5>
     <% if match_user(@list.user) %>
-      <%= link_to 'Edit List title & description', edit_list_path(@list) %>
+      <%= link_to 'Edit List title & description', edit_list_path(@list), class: "btn" %>
       <%= link_to 'Delete this list', list_path(@list), data: {
                     turbo_method: :delete,
                     turbo_confirm: "Are you sure?"
-                  } %>
+                  }, class: "btn" %>
     <% end %>
   <% end %>
 </div>

@@ -4,7 +4,7 @@
   <% @user.lists.each do |list| %>
     <ul>
       <% if current_user == list.user || list.status == 'public' %>
-        <li><%= link_to list.title, list_path(list) %></li>
+        <li class="task"><%= link_to list.title, list_path(list) %></li>
       <% end %>
     </ul>
   <% end %>
