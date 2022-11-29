@@ -15,15 +15,17 @@
 <div data-controller="empty" data-empty-target="container" class="container">
   <h3>To do:</h3>
     <% @list.tasks.each do |task| %>
-      <ul>
-        <%= turbo_frame_tag task do %>
-          <li data-empty-target="task"><%= task.title %> - <%= task.description %> <input type="checkbox"></li>
-          <% if match_user(@list.user) %>
-            <%= link_to 'Edit Task', edit_list_task_path(@list, task), class: "btn" %>
-            <%= link_to "Delete Task", [task.list, task], data: { turbo_method: :delete }, class: "btn" %>
+      <div class="task">
+        <ul>
+          <%= turbo_frame_tag task do %>
+            <li data-empty-target="task"><%= task.title %> - <%= task.description %> <input type="checkbox"></li>
+            <% if match_user(@list.user) %>
+              <%= link_to 'Edit Task', edit_list_task_path(@list, task), class: "btn" %>
+              <%= link_to "Delete Task", [task.list, task], data: { turbo_method: :delete }, class: "btn" %>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
+        </ul>
+      </div>
     <% end %>
 </div>
   
